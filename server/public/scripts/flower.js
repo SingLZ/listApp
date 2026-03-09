@@ -1,12 +1,7 @@
-// Helper function to create URL slug from name
-const createSlug = (name) => {
-    return name.toLowerCase().replace(/\s+/g, '-')
-}
-
+// parse ID from URL
+const requestedID = parseInt(window.location.href.split('/').pop())
 
 const renderGift = async () => {
-    // parse ID from URL
-    const requestedID = parseInt(window.location.href.split('/').pop())
 
     // fetch all gifts
     const response = await fetch('/flowers')

@@ -1,19 +1,34 @@
-// Helper function to create URL slug from name
-const createSlug = (name) => {
-    return name.toLowerCase().replace(/\s+/g, '-')
+
+let allGifts = [] 
+
+const loadGifts = async () => {
+    const response = await fetch('/flowers')
+    allGifts = await response.json()
+    renderGifts(allGifts)
 }
 
-
-const renderGifts = async () => {
+const filterGifts = (searchTerm) => {
+    if (!searchTerm.trim()) {
+        return allGifts 
+    }
     
-    const response = await fetch('/flowers')
-    const data = await response.json()
+    const term = searchTerm.toLowerCase()
+    return allGifts.filter(gift => 
+        gift.name?.toLowerCase().includes(term) ||
+        gift.audience?.toLowerCase().includes(term) ||
+        gift.description?.toLowerCase().includes(term) ||
+        gift.pricePoint?.toLowerCase().includes(term)
+    )
+}
+
+const renderGifts = (gifts) => {
 
     const mainContent = document.getElementById('main-content')
+    mainContent.innerHTML = ''
 
-    if (data) {
+    if (gifts && gifts.length > 0) {
 
-        data.map(gift => {
+        gifts.forEach(gift => {
             const card = document.createElement('div')
             card.classList.add('card')
 
@@ -39,16 +54,14 @@ const renderGifts = async () => {
 
             const link = document.createElement('a')
             link.textContent = 'Read More >'
-            link.setAttribute('role', 'button')
-            link.href = `/flowers/${createSlug(gift.name)}`
+            link.href = `/flowers/${gift.id}`
             bottomContainer.appendChild(link)
 
             card.appendChild(topContainer)
-            card.appendChild(bottomContainer) 
+            card.appendChild(bottomContainer)
             mainContent.appendChild(card)
         })
-    }
-    else {
+    } else {
         const message = document.createElement('h2')
         message.textContent = 'No Gifts Available 😞'
         mainContent.appendChild(message)
@@ -62,5 +75,15 @@ if (requestedURL) {
     // user navigated to something like /flowers/… directly on client
     window.location.href = '../404.html'
 } else {
-    renderGifts()
+    loadGifts()
+    
+    // Add search functionality
+    const searchInput = document.getElementById('search-input')
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value
+            const filteredGifts = filterGifts(searchTerm)
+            renderGifts(filteredGifts)
+        })
+    }
 }

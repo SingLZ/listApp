@@ -19,15 +19,20 @@ headerLeft.appendChild(headerTitle)
 const headerRight = document.createElement('div')
 headerRight.className = 'header-right'
 
+const searchInput = document.createElement('input')
+searchInput.type = 'text'
+searchInput.placeholder = 'Search flowers...'
+searchInput.className = 'search-input'
+searchInput.id = 'search-input'
 
-
-const headerButton = document.createElement('Home')
+const headerButton = document.createElement('button')
 headerButton.textContent = 'Home'
     
 headerButton.addEventListener('click', function handleClick(event) {
   window.location = '/'
 })
 
+headerRight.appendChild(searchInput)
 headerRight.appendChild(headerButton)
 
 headerContainer.appendChild(headerLeft)
