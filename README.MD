@@ -34,9 +34,9 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented required features:
 
-[![Video Title](http://img.youtube.com/vi/UkUkAn4OYxU/0.jpg)](https://www.youtube.com/watch?v=UkUkAn4OYxU)
+[![Video Title](http://img.youtube.com/vi/k5u3Pkm2OGQ/0.jpg)](https://www.youtube.com/watch?v=k5u3Pkm2OGQ)
 <!-- Replace this with whatever GIF tool you used! -->
-GIF created with ...  Add GIF tool here
+GIF created with ...  Youtube
 <!-- Recommended tools:
 [Kap](https://getkap.co/) for macOS
 [ScreenToGif](https://www.screentogif.com/) for Windows
@@ -89,7 +89,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented required features:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+[![Video Title](http://img.youtube.com/vi/UkUkAn4OYxU/0.jpg)](https://www.youtube.com/watch?v=UkUkAn4OYxU)
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with ...  Youtube
